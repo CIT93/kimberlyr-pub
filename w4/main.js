@@ -1,7 +1,5 @@
 const cfpData = [];
 
-
-
 function determineHouseSizePoints(SizeOfHouse) {
     let houseSizePoints = 0;
   if (SizeOfHouse === "Large House") {
@@ -46,7 +44,13 @@ function start(houseHoldMembers, houseSize) {
 }
 
 function displayOutput() {
-
+    for (arr of cfpData) {
+        console.log(arr)
+        const output = document.getElementById("output");
+        const newP = document.createElement("p");
+         newP.textContent = `Your score for house members is ${arr[2]}`;
+         output.appendChild(newP)
+    }
 }
 
 start(5, "medium-sized house");

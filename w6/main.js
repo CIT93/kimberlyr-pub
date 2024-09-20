@@ -55,6 +55,8 @@ function start(houseHoldMembers, houseSize) {
     houseS: houseSize,
     houseHMP: houseHoldPTS,
     houseSP: houseSizePTS,
+    firstNM: firstName
+    lastNM: lastName
     cfpTotal: total
 });
 }
@@ -65,7 +67,7 @@ function displayOutput() {
         const newH2 = document.createElement("h2");
         newH2.textContent = `Cardon Footprint ${obj.cfpTotal}`;
         const newH3 = document.createElement("h3");
-        newH3.textContent = `Based on number in and size of home`
+        newH3.textContent = `Dear, ${obj.firstNM} ${obj.lastNM}`
         const newP = document.createElement("p");
         newP.textContent = `This number is based on the number of people in the house of ${obj.houseHM} (score: ${obj.houseHMP}),`;
         newP.textContent += ` and a ${obj.houseS} size of home (score:${obj.houseSP}).`;
@@ -82,7 +84,7 @@ FORM.addEventListener('submit', function(e){
     const lastName = FORM.lastname.value;
     const housemember = parseInt(FORM.housemember.value);
     const housesize = FORM.houses.value;
-    start(housemember, housesize);
+    start(housemember, housesize, firstName, lastName);
     OUTPUT.innerHTML = "";
     displayOutput();
     FORM.reset();

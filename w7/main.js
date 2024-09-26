@@ -1,5 +1,8 @@
+import { renderTbl } from "./render.js";
+
 const FORM = document.getElementById("form");
 const OUTPUT = document.getElementById("output");
+const TBL = document.getElementById("tab-data");
 const cfpData = [];
 
 function determineHouseSizePoints(SizeOfHouse) {
@@ -38,14 +41,6 @@ return houseHoldPoints
 }
 
 
-function displayOutput(obj){
-    console.log(obj);
-    const output = document.getElementById("output");
-    const newH2 = document.createElement("h2");
-    newH2.textContent = `Cardon Footprint ${obj.cfpTotal}`;
-    output.appendChild(newH2);
-}
-
 function start(houseHoldMembers, houseSize, firstName, lastName) {
     const houseHoldPTS = determinePoints(houseHoldMembers);
     const houseSizePTS = determineHouseSizePoints(houseSize);
@@ -62,22 +57,6 @@ function start(houseHoldMembers, houseSize, firstName, lastName) {
 }
 
 
-function displayOutput() {
-    for (obj of cfpData) {
-        const newH2 = document.createElement("h2");
-        newH2.textContent = `Cardon Footprint ${obj.cfpTotal}`;
-        const newH3 = document.createElement("h3");
-        newH3.textContent = `Based on number in and size of home for  ${obj.firstNM} ${obj.lastNM}`;
-        const newP = document.createElement("p");
-        newP.textContent = `This number is based on the number of people in the house of ${obj.houseHM} (score: ${obj.houseHMP}),`;
-        newP.textContent += ` and a ${obj.houseS} size of home (score:${obj.houseSP}).`;
-        OUTPUT.appendChild(newH2);
-        OUTPUT.appendChild(newH3);
-        OUTPUT.appendChild(newP);
-    }
-}
-
-
 FORM.addEventListener('submit', function(e){
     e.preventDefault();
     const firstName = FORM.firstname.value;
@@ -86,6 +65,6 @@ FORM.addEventListener('submit', function(e){
     const housesize = FORM.houses.value;
     start(housemember, housesize, firstName, lastName);
     OUTPUT.innerHTML = "";
-    displayOutput();
+    renderTbl(cfpData);
     FORM.reset();
 })

@@ -1,9 +1,8 @@
 import { renderTbl } from "./render.js";
-import {determineHouseSizePoints, determinePoints} from "./carbonfp.js";
+import {determineHouseSizePoints, determinePoints} from "./cfp.js";
 
 const FORM = document.getElementById("form");
 const OUTPUT = document.getElementById("output");
-// const TBL = document.getElementById("tab-data");
 const cfpData = [];
 
 

@@ -1,5 +1,6 @@
 const TBL = document.getElementById("tab-data");
-
+const FORM = document.getElementById("from");
+// just copy from line 1 but replace it with from. this reference inside the module
 function renderTblHeading() {
   TBL.innerHTML = "";
     const table = document.createElement("table");
@@ -32,7 +33,14 @@ function renderTblBtn(index, data){
 
   })
   btnEdit.addEventListener('click',function(e){
-    
+    FORM[1].value = obj.firstNM
+    FORM[2].value = obj.lastNM
+    FORM[3].value = obj.houseM
+    FORM[4].value = obj.houseS
+    // i frist try it without the obj (got a error), then i added the obj to see if that makes any difference (got error)
+    // i thought it maybe i put the wrong value and change it (got error)
+    data.splice(index, 1);
+    renderTbl(data);
   })
   return td;
 }

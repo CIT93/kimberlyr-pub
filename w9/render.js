@@ -1,9 +1,7 @@
-const TBL = document.getElementById("tab-data");
-const FORM = document.getElementById("form");
-// just copy from line 1 but replace it with from. this reference inside the module
+import { FORM, TBL} from "./global.js";
+import { saveLS } from "./storage.js";
 
 function renderTblHeading() {
-  TBL.innerHTML = "";
     const table = document.createElement("table");
   const thead = document.createElement("thead");
   const tr = document.createElement("tr");
@@ -18,6 +16,12 @@ function renderTblHeading() {
   return table
 }
 
+function onUpdate(index, data) {
+  data.splice(index, 1);
+  renderTbl(data);
+  saveLS(data)
+}
+
 function renderTblBtn(obj, index, data){
   const td = document.createElement("td");
   const btnEdit = document.createElement("button");
@@ -28,20 +32,15 @@ function renderTblBtn(obj, index, data){
   td.appendChild(btnDel);
   btnDel.addEventListener('click',function(e){
     console.log('Hello form inside the delete buttom');
-    console.log(e);
-    data.splice(index, 1);
-    renderTbl(data);
+    onUpdate(index, data);
 
   })
   btnEdit.addEventListener('click',function(e){
-    FORM[1].value = obj.firstNM
-    FORM[2].value = obj.lastNM
-    FORM[3].value = obj.houseM
-    FORM[4].value = obj.houseS
-    // i frist try it without the obj (got a error), then i added the obj to see if that makes any difference (got error)
-    // i thought it maybe i put the wrong value and change it (got error)
-    data.splice(index, 1);
-    renderTbl(data);
+    FORM[1].value = obj.firstNM;
+    FORM[2].value = obj.lastNM;
+    FORM[3].value = obj.houseM;
+    FORM[4].value = obj.houseS;  
+    onUpdate(index, data);
   })
   return td;
 }
@@ -58,7 +57,7 @@ function renderTblBody(data){
         tr.appendChild(td);
           }
          }
-    const td = renderTblBtn(index, data);
+    const td = renderTblBtn(obj, index, data);
     tr.appendChild(td);
     tbody.appendChild(tr); 
   }); 
@@ -72,7 +71,7 @@ function renderTbl(data){
   const tbody = renderTblBody(data);
   table.appendChild(tbody);
   TBL.appendChild(table);
-  }
+   }
 }
 
 export {renderTbl};

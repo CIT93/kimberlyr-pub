@@ -45,7 +45,7 @@ FORM.addEventListener('submit', e =>{
     if (FNAME.value !== '' && LNAME.value !== '') {
         SUBMIT.textContent = '';
         //start(FNAME.value, LNAME.value, parseInt(FORM.housemember.value), FORM.houses.value,);
-        const fpOji = new FP(FNAME.value, LNAME.value, parseInt(FORM.housemember.value), FORM.houses.value);
+        const fpOji = new FP(FNAME.value, LNAME.value, parseInt(FORM.housemember.value), FORM.houses.value );
         // fpOji.houseHoldPoints();
         // fpOji.houseSizePoints();
         cfpData.push(fpOji);

@@ -1,18 +1,19 @@
-const FORM = document.getElementById("form");
-const output = document.getElementById("output");
+document.addEventListener('DOMContentLoaded', () => {
+    const FORM = document.getElementById("form");
+    const startWorkout = (Exercise, reps, time) => {
+        const output = document.getElementById("output");
+        output.textContent = `Start ${reps} reps of ${Exercise}, you have ${time} minutes to finish. `
+        setTimeout(() => {
+            output.textContent = `Stop ${Exercise}! You're done.`
+        }, time * 5000);
+    };
 
-const startWorkout = (Exercise, Reps, Time) => {
-    output.textContent = `Start ${Reps} reps of ${Exercise}, you have ${Time} minutes to finish. `
-    setTimeout(() => {
-        output.textContent = `Stop ${Exercise}! You're done.`
-    }, timeout * 60000);
-};
-
-FORM.addEventListener("submit", (e) => {
+    FORM.addEventListener("submit", (e) => {
     e.preventDefault();
     const Exercise = FORM.Exercise.value;
-    const Reps = FORM.Reps.value
-    const Time = FORM.Time.value
-    startWorkout(Exercise, Reps, Time);
+    const reps = FORM.Reps.value
+    const time = FORM.Time.value
+    startWorkout(Exercise, reps, time);
     FORM.reset()
+    })
 })

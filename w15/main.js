@@ -1,5 +1,5 @@
 
-import { renderTbl, addRow } from "./render.js";
+import { renderTbl} from "./render.js";
 import {FORM, FNAME, LNAME, SUBMIT} from "./global.js";
 import {saveLS, cfpData} from "./storage.js";
 import { FP } from "./fp.js";
@@ -33,7 +33,6 @@ FORM.addEventListener('submit', e =>{
         cfpData.push(fpOji);
         saveLS(cfpData); 
         renderTbl(cfpData);
-        addRow("tableID")
         FORM.reset();
     } else {
         SUBMIT.textContent = "Form requires first name and last name";

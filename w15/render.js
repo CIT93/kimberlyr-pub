@@ -4,6 +4,7 @@ import { saveLS } from "./storage.js";
 
 const renderTblHeading = () =>{
     const table = document.createElement("table");
+    table.setAttribute("id", "table-id")
   const thead = document.createElement("thead");
   const tr = document.createElement("tr");
   const headingTextArr = ["Name", "HouseHold", "HouseSize","Food Choice", "Footprint", "Actions"];
@@ -70,17 +71,23 @@ const renderTbl = (data) => {
   const tbody = renderTblBody(data);
   table.appendChild(tbody);
   TBL.appendChild(table);
-  addRow("tableID", data);
+  calculateAvg(data);
    }
 }
 
-const addRow = (tableID, data) => {
-  const totalReduce = data.reduce ((sum, total) => sum + total, 0)
-  let tableRef = document.getElementById(tableID);
+const calculateAvg = (data) => {
+  const totalReduce = data.reduce ((sum, ea) => sum + ea.total, 0)
+  let tableRef = document.getElementById("table-id");
   let newRow = tableRef.insertRow(-1);
   let newCell = newRow.insertCell(0);
-  let newText = document.createTextNode(`${math.floor(totalReduce/data.length)}`);
+  let newCell_1 = newRow.insertCell(0);
+  let newCell_2 = newRow.insertCell(0);
+  let newCell_3 = newRow.insertCell(0);
+  let newCell_4 = newRow.insertCell(0);
+  let newLabl = document.createTextNode(`Averge Footprint`)
+  let newText = document.createTextNode(`${Math.floor(totalReduce/data.length)}`);
+  newCell_1.appendChild(newLabl);
   newCell.appendChild(newText);
 }
 
-export {renderTbl, addRow};
+export {renderTbl};

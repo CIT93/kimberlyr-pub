@@ -68,6 +68,17 @@
             <label for="">Do you have both a dishwater and a washing machine?</label>
             <input type="checkbox" id="dishAndWash" checked>
         </div>
+        <div>
+            <label for="">Determine how many household purchases you make each year</label>
+            <select name="purchases" required>
+                <option value="">---how many household purchases you make each year?---</option>
+                <option value="10">More than 7 items per year</option>
+                <option value="8">between 5 and 7 items per year</option>
+                <option value="6">between 3 and 5 items per year</option>
+                <option value="4">less than 3 items per year</option>
+                <option value="2">nothing or only secondhand items</option>
+            </select>
+        </div>
         <button type="submit">Submit</button><br>
         <span id="submitError" class="error"></span>
         </fieldset>

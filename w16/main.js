@@ -38,6 +38,7 @@ FORM.addEventListener('submit', e =>{
         e.target.foodSource.value,
         parseInt(e.target.water.value),
         e.target.dishAndWash.checked,
+        parseInt(e.target.purchases.value),
         );
         cfpData.push(fpOji);
         saveLS(cfpData); 

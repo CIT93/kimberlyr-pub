@@ -37,13 +37,6 @@ const renderTblBtn = (obj, index, data) => {
 
   })
   btnEdit.addEventListener('click', () => {
-    // FORM[1].value = obj.first;
-    // FORM[2].value = obj.last;
-    // FORM[3].value = obj.houseMembers;
-    // FORM[4].value = obj.houseSize;
-    // FORM[5].value = obj.foodChoices;
-    // FORM[6].value = obj.foodSource;
-    // FORM[7].value = obj.water;
     FORM.firstName.value = obj.first;
     FORM.lastName.value = obj.last;
     FORM.housemember.value = obj.houseMembers;
@@ -52,6 +45,7 @@ const renderTblBtn = (obj, index, data) => {
     FORM.foodSource.value = obj.foodSource;
     FORM.water.value = obj.waterConsumePoints.toString();
     FORM.dishAndWash.checked = obj.dishAndWash;
+    FORM.purchases.value = obj.purchasesPoints.toString();
     onUpdate(index, data);
   })
   return td;

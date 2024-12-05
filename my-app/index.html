@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivated Routine Planner</title>
+    <script type="module" defer src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Routine adivce based on your energy, time, and motivation</h1>
+
+    <form id="routineForm">
+        <label for="energyLevel">Energy Level (1-10):</label>
+        <input type="number" id="energyLevel" name="energyLevel" min="1" max="10" required>
+
+        <label for="timeAvailable">Available Hours:</label>
+        <input type="number" id="timeAvailable" name="timeAvailable" min="0" required>
+
+        <label for="hasMotivation">Motivation:</label>
+        <select id="hasMotivation" name="hasMotivation" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        
+        <button type="submit">Get Advice</button>
+    </form>
+    <div id="tableHolder"></div>
+</body>
+</html>
